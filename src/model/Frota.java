@@ -128,7 +128,7 @@ public class Frota {
 		}
 		
 		else if ( direcao.equalsIgnoreCase( "Oeste" ) ||
-				direcao.equalsIgnoreCase( "Esquerda " ) ) {
+				direcao.equalsIgnoreCase( "Esquerda" ) ) {
 			mudancaColuna = -1;
 		}
 		
