@@ -14,6 +14,7 @@ O cliente tem entradas via args[], então você passar os argumentos, nesta orde
   - Nome do jogador
   - Endereço de ip local
   - Porta
+  
 <b> A porta deve ser a mesma que foi configurada no TCP_Servidor <b>
   
 # TCP_Communicator
