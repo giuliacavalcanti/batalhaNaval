@@ -38,7 +38,7 @@ public class View implements Serializable{
 		// Pergunta pro usuario dizer uma localização e direção de um barco
 		System.out.println( "Os inputs devem ser (Numero [0-9], Numero [0-9], Direção [Cima, Baixo, Esquerda, Direita]");
 		System.out.println( nomeJogador + ", escolha uma posição inicial de linha e coluna para o \n" +
-				nomesBarcos[index] + "[tamanho = 2] navio de comprimento e em qual direção sera construido: " );
+				nomesBarcos[index] + "de tamanho navio de comprimento " + (index + 2) + " e em qual direção sera construido: " );
 	
 		// Continua perguntando até todos os tipos serem validos
 		// ( integer, integer, and String).
