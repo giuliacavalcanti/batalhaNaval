@@ -18,9 +18,10 @@ O cliente tem entradas via args[], então você passar os argumentos, nesta orde
 <b><i> A porta deve ser a mesma que foi configurada no TCP_Servidor </b></i>
 
 ## Caracteristicas do Desenvolvimento
+<ol>
+  <li> TCP_Communicator </li>
+    Essa classe será responsável pelo controle da comunicação, logo, após o cliente e o servidor estarem conectados, você <b> deve </b> dar um Run nesta classe.
 
-1. TCP_Communicator
-  Essa classe será responsável pelo controle da comunicação, logo, após o cliente e o servidor estarem conectados, você <b> deve </b> dar um Run nesta classe.
-
-2. View 
-  Essa classe é o que fará a interação direta com o usuário.
+  <li> View </li>
+    Essa classe é o que fará a interação direta com o usuário.
+</ol>
