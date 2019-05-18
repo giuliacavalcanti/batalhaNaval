@@ -19,10 +19,8 @@ O cliente tem entradas via args[], então você passar os argumentos, nesta orde
 
 ## Caracteristicas do Desenvolvimento
 
-### TCP_Communicator
+1. TCP_Communicator
+  Essa classe será responsável pelo controle da comunicação, logo, após o cliente e o servidor estarem conectados, você <b> deve </b> dar um Run nesta classe.
 
-Essa classe será responsável pelo controle da comunicação, logo, após o cliente e o servidor estarem conectados, você <b> deve </b> dar um Run nesta classe.
-
-### View
-
-Essa classe é o que fará a interação direta com o usuário.
+2. View 
+  Essa classe é o que fará a interação direta com o usuário.
