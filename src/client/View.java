@@ -37,8 +37,8 @@ public class View implements Serializable{
 		
 		// Pergunta pro usuario dizer uma localização e direção de um barco
 		System.out.println( "Os inputs devem ser (Numero [0-9], Numero [0-9], Direção [Cima, Baixo, Esquerda, Direita]");
-		System.out.println( nomeJogador + ", escolha uma posição inicial de linha e coluna para o " +
-				nomesBarcos[index] + " navio de comprimento e em qual direção sera construido: " );
+		System.out.println( nomeJogador + ", escolha uma posição inicial de linha e coluna para o \n" +
+				nomesBarcos[index] + "[tamanho = 2] navio de comprimento e em qual direção sera construido: " );
 	
 		// Continua perguntando até todos os tipos serem validos
 		// ( integer, integer, and String).
@@ -46,16 +46,17 @@ public class View implements Serializable{
 			
 			// Valida coluna e linha
 			if( spot != 2 && scan.hasNextInt() ) {
-				System.out.println( "Input  registrado" );
+				System.out.println( "Coordenada registrada" );
 				inputs[spot] = scan.nextInt();
 				spot++;
 			}
 			
 			// Valida direção
 			else if ( spot == 2 && scan.hasNext() ) {
-				System.out.println( "Input Registrado." );
+				System.out.println( "Direção registrada." );
 				inputs[spot] = scan.next();
 				inputValido = true;
+				spot++;
 			}
 			else {
 				System.out.println( "Input invalido. Os inputs devem ser (inteiro, inteiro, String)" );
@@ -100,7 +101,7 @@ public class View implements Serializable{
 			
 			//
 			else {
-				System.out.println( "Não é um input valido! Must be a pair of numbers!" );
+				System.out.println( "Não é um input valido! A posicao no tabuleiro deve ser um par linha e coluna!" );
 				index = 0;
 			}
 		}

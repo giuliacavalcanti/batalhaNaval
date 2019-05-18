@@ -61,7 +61,7 @@ public class Frota {
 	
 			while( spot < tamanhosBarcos && validaDentroTabuleiro ) {
 				// True se está dentro dos limites
-				validaDentroTabuleiro = tabuleiro.checaTiroValido( linha, coluna );
+				validaDentroTabuleiro = tabuleiro.checaValidadeLinhaColuna( linha, coluna );
 				
 				//Colocar as posições um array para comparação com os locais dos barcos que já estão no tabuleiro.
 				int[] tiroXbarcos = { linha, coluna };

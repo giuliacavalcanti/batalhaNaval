@@ -57,7 +57,7 @@ public class Model {
 	 * @return  boolean  
 	 */
 	public boolean resultadoJogada( int player, int linha, int coluna, char tiro ) {
-		if( tabuleiros[player].checaTiroValido( linha, coluna) ){
+		if( tabuleiros[player].checaValidadeLinhaColuna( linha, coluna) ){
 			return frotas[player].checkHit( linha, coluna, tiro );
 		}
 		else{

@@ -1,4 +1,5 @@
 package model;
+import java.io.Serializable;
 /**
  * Classe que representa o tabuleiro
  * e suas regras de funcionamento
@@ -6,7 +7,8 @@ package model;
  * @author Falcao
  *
  */
-public class Tabuleiro {
+@SuppressWarnings("serial")
+public class Tabuleiro implements Serializable {
 	char [][] tabuleiro;
 	
 	// Tamanho do tabuleiro
@@ -103,7 +105,7 @@ public class Tabuleiro {
 	 * @param   coluna 
 	 * @return  boolean  true se estão no tabuleiro, falso se não
 	 */
-	public boolean checaTiroValido( int linha, int coluna ) {
+	public boolean checaValidadeLinhaColuna( int linha, int coluna ) {
 		
 		// Verifica se o tiro é válido
 		if( linha >= maximoLinhas || coluna >= maximoColunas ||

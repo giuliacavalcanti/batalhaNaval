@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.net.Socket;
 
 import client.View;
+import model.Tabuleiro;
 
 /**
  * Essa classe lida com a comunicação TCP
@@ -18,6 +19,8 @@ import client.View;
 public class TCP_Communicator implements Serializable{
 	// Usado pra se comunicar com o jogador
 	View view;	
+	
+	Tabuleiro tabuleiro;
 	// Nome do jogador
 	String nomeJogador;	
 	// Socket que usamos para conectar o server
@@ -47,7 +50,9 @@ public class TCP_Communicator implements Serializable{
 		this.oos = oos;
 		this.ois = ois;
 		view = new View();
+		tabuleiro = new Tabuleiro(0,0,10,10);
 	}
+	
 	
 	/**
 	 * Este método pede ao usuário para escolher pontos para os seus qtdBarcosCriados. 
@@ -66,7 +71,7 @@ public class TCP_Communicator implements Serializable{
 				oos.writeObject( view.getPositions( nomeJogador, tamanhoDoBarcoASerCriado ) );
 				
 				// Se o navio puder ser construído nessa posição e nessa direção, 
-				// um valor booleano de true será retornado.
+				// um array com os valores inseridos será retornado
 
 				if( (boolean) ois.readObject() ) {
 					qtdBarcosCriados++;
