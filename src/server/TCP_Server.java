@@ -179,7 +179,7 @@ public class TCP_Server {
 	*/
 	public boolean checkHit( int jogadorAlvo, int[] alvo, int jogadorAtacante ) {
 		return model.resultadoJogada( jogadorAlvo, alvo[0], 
-				alvo[1], jogadores[jogadorAtacante].getHitMarcador() );
+			alvo[1], jogadores[jogadorAtacante].getHitMarcador() );
 	}
 	
 	/**

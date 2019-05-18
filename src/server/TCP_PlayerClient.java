@@ -87,7 +87,6 @@ public class TCP_PlayerClient {
 	public static void main( String [] args ) {
 		try {
 			
-			// Nome do jogador
 			String jogadorNome = args[0];
 			
 			// Nome do servidor
