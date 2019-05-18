@@ -15,7 +15,7 @@ O cliente tem entradas via args[], então você passar os argumentos, nesta orde
   - Endereço de ip local
   - Porta
   
-<b><i> A porta deve ser a mesma que foi configurada no TCP_Servidor </b></em>
+<b><i> A porta deve ser a mesma que foi configurada no TCP_Servidor </b></i>
   
 ## TCP_Communicator
 
