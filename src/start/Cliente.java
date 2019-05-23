@@ -162,11 +162,9 @@ public class Cliente {
           log = (String)istream.readObject();
           print(log);
 
-        } else if (sinal == 2){
-          /* Caso o loop do servidor termine ele enviar√° o sinal=2,
-           * nesse caso a vari·vel boolean "end" È setada para 'true' e o cliente recebe um sinal
-           * com o Ìndice do vencedor ou -1 em caso de empate... */
-          print("Acabaram os tiros");
+        } 
+        else {
+          print("Todos os barcos foram destruidos");
           end = true;
           break;
         }
