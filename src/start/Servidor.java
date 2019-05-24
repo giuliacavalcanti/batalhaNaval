@@ -27,7 +27,7 @@ public class Servidor {
   static DataOutputStream[] dos = new DataOutputStream[2];
 
   // constantes string:
-  private static final String BARCO_DESTRUIDO = "------------------------------\nBarco destruição!\n------------------------------";
+  private static final String BARCO_DESTRUIDO = "------------------------------\nBarco destruido!\n------------------------------";
   private static final String TIRO_NA_AGUA = "------------------------------\nTiro na água!\n------------------------------";
   private static final String ALVO_JA_ATACADO = "------------------------------\nAlvo ja foi atacado antes!\n------------------------------";
 
@@ -66,10 +66,12 @@ public class Servidor {
     int p1 = jogadores[0].getPontos();
     int p2 = jogadores[1].getPontos();
     // verifica a maior pontuação para retornar o índices
-    if (p1 > p2)
+    if (p1 > p2) {
       return 0;
-    else if (p2 > p1)
+    }
+    else if (p2 > p1) {
       return 1;
+    }
     // se não houver um maior que o outro,
     // significa ue serÃ£o iguais, logo, retorne -1
     return -1;
@@ -175,13 +177,19 @@ public class Servidor {
 
         // enviar log do resultado do tiro para os clientes
       for (int k=0; k<2; k++){
-          ostream[k].writeObject(coord[0] +","+ coord[1] + "\n Resultado da jogada: " + result);
+          ostream[k].writeObject(coord[0] +","+ coord[1] + "\n Resultado da jogada:\n " + result);
           ostream[k].flush();
          }
 
         iteration++;
       }
-
+      
+      //finalizar o jogo
+      for (int k=0; k<2; k++) {
+          ostream[k].writeInt(2);
+          ostream[k].flush();
+        }
+      
       // enviar o índices do vencedor
       // em caso de empate, indexVencedor = -1
       int indexVencedor = indexJogadorComMaisPontos();
@@ -190,7 +198,7 @@ public class Servidor {
         ostream[k].flush();
       }
 
-      // aguarda os clientes encerrarem a conexÃ£o
+      // aguarda os clientes encerrarem a conexção
       String[] str = new String[2];
       for (int k=0; k<2; k++)
         str[k] = (String) istream[k].readObject();

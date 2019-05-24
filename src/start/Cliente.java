@@ -134,20 +134,21 @@ public class Cliente {
         // receber o sinal para definir quem ataca
         sinal = (int) istream.readInt();
         //mostrarTabs(myIndex);
-        placar = (String)istream.readObject();
-        print(placar);
+
 
         /* o sinal enviado pelo servidor contém o índice do jogador que ataca nessa rodada
          * logo, o cliente deve verificar se esse sinal é o seu índice no jogo */
         if (sinal == myIndex){
-          print("Sua vez. Digite as coordenadas (linha e coluna) do tiro.");
-          /* recebe os valores X e Y do teclado e em seguida envia para o servidor */
-          coord = new int[2];
-          System.out.print("Linha: ");
-          coord[0] = in.nextInt(); // coordenada x
-          System.out.print("Coluna: ");
-          coord[1] = in.nextInt(); // coordenada y
-          ostream.writeObject(coord); // envia as coordenadas
+        	placar = (String)istream.readObject();
+            print(placar);
+            print("Sua vez. Digite as coordenadas (linha e coluna) do tiro.");
+           /* recebe os valores X e Y do teclado e em seguida envia para o servidor */
+           coord = new int[2];
+           System.out.print("Linha: ");
+           coord[0] = in.nextInt(); // coordenada x
+           System.out.print("Coluna: ");
+           coord[1] = in.nextInt(); // coordenada y
+           ostream.writeObject(coord); // envia as coordenadas
 
           // receber log do resultado do tiro
           log = (String)istream.readObject();
@@ -155,24 +156,22 @@ public class Cliente {
 
           /* se o sinal for igual ao índice do seu oponente significa que é a vez do mesmo */
         } else if (sinal == oponentIndex) {
-
+            placar = (String)istream.readObject();
+            print(placar);
           print("Vez de "+ jogadores[oponentIndex].getNome() +". Espere...");
-
           // receber log do resultado do tiro
           log = (String)istream.readObject();
           print(log);
-
         } 
         else {
-          print("Todos os barcos foram destruidos");
-          end = true;
           break;
         }
       }
-
+      
+      print("Todos os barcos foram destruidos");      
       // recebe o índice do jogador vencedor: 0 ou 1
       // em caso de empate receberÃ¡ -1.
-      indexVencedor = (int)istream.readInt();
+      indexVencedor = istream.readInt();
       if (indexVencedor > 0){
         print("+-----------------------------+");
         print("| \tVencedor: "+ jogadores[indexVencedor].getNome());
