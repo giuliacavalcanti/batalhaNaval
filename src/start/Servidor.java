@@ -133,14 +133,14 @@ public class Servidor {
       }
 
       // iniciar a Batalha
-      int i, def, x, y, iteration=0;
+      int i, def, iteration=0;
       int[] coord = new int[2];
       char alvo;
       String result = "";
 
       // LOOP ==================================================================================================//
       int [][] partesBarcosExistentes = partesBarcos();
-      while (partesBarcosExistentes[0][0] >= 0 && partesBarcosExistentes[1][1] >= 0) {
+      while (partesBarcosExistentes[0][0] > 0 && partesBarcosExistentes[1][1] > 0) {
     	  coord = null; // reseta coordenadas
           i = iteration % 2; // indice do jogador que ataca
           if (i==0){
@@ -157,38 +157,30 @@ public class Servidor {
             ostream[k].flush();
           }
         
-        if ((partesBarcosExistentes[0][0] > 0) && (partesBarcosExistentes[1][1] > 0)) {
-          // esperar coordenadas do tiro
-          coord = (int[]) istream[i].readObject();
+        // esperar coordenadas do tiro
+        coord = (int[]) istream[i].readObject();
 
-          // efetuar ataque
-          alvo = jogadores[i].atacar(jogadores[def], coord[0], coord[1]);
-          if (alvo == 'B'){
-              result = BARCO_DESTRUIDO;
-              partesBarcosExistentes[def][def]--;
+        // efetuar ataque
+        alvo = jogadores[i].atacar(jogadores[def], coord[0], coord[1]);
+        if (alvo == 'B'){
+            result = BARCO_DESTRUIDO;
+            partesBarcosExistentes[def][def]--;
+        } 
+        else if (alvo == '~'){
+        	result = TIRO_NA_AGUA;
+       } 
+        else{
+            result = ALVO_JA_ATACADO;
+       } 
 
-            } 
-            else if (alvo == '~'){
-              result = TIRO_NA_AGUA;
-            } 
-            else{
-              result = ALVO_JA_ATACADO;
-            } 
+        // enviar log do resultado do tiro para os clientes
+      for (int k=0; k<2; k++){
+          ostream[k].writeObject(coord[0] +","+ coord[1] + "\n Resultado da jogada: " + result);
+          ostream[k].flush();
+         }
 
-            // enviar log do resultado do tiro para os clientes
-            for (int k=0; k<2; k++){
-              ostream[k].writeObject(coord[0] +","+ coord[1]);
-              ostream[k].flush();
-            }
-
-            iteration++;
-
-          } else {
-            // se partesBarcos == 0
-            break;
-          }
-
-        }// fim do while
+        iteration++;
+      }
 
       // enviar o índices do vencedor
       // em caso de empate, indexVencedor = -1
